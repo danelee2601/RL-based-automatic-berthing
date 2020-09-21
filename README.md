@@ -1,3 +1,4 @@
-<div style="text-align:center">
-![reward history](imgs/reward_hist.png)
-</div>
+<p align="center">
+<img src="imgs/reward_hist.png">
+</p>
+
