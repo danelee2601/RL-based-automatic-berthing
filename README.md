@@ -32,8 +32,10 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 </p>
 위는 강화학습 기반 자동접안 시스템의 전박전인 흐름을 보여준다.<br>
 여기서 actor, critic이란 각각의 딥뉴럴네트워크(Deep Neural Network, DNN)이다.<br>
+
 - actor는 정책을 mapping하는 DNN (즉, actor가 action을 output함)
 - critic은 Q-value를 output하는 DNN 이다. (Q-value란 현재 상태(state)에서 미래에 얼마만큼의 보상을 받을수 있는지를 나타내는 값이다 == 현재 상태가 얼마나 좋은지를 나타내는 값)
+
 <small>자세한 사항은 구글에 actor-critic method라고 검색하면 많은 자료가 나오니 참고하면 될듯합니다.</small>
 
 # PPO의 트레이닝을 위한 Hyper-parameter 세팅
