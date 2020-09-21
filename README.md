@@ -68,9 +68,15 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 2. 매 epoch마다 초기 선박 포지션 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">를 랜덤하게 선정한다. 이때, 랜덤하게 선정되는 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">의 범위는 다음과 같이 선정하였다: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br> where \psi_0는 선박헤딩이 port/harbor을 향할때의 각도이다. 위의 내용은 다음의 figures들에 잘 설명되어져있다:
+
+<p align="center">
+  <img src="imgs/randomly_generaged_ships2.png"/>
+  <img src="imgs/psi_0.png"/>
+</p>
 3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.
 4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, *n*번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
+
 
 # PPO의 트레이닝을 위한 Hyper-parameter 세팅
 Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.html)
@@ -99,6 +105,9 @@ Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.ht
 Google Colab allows users to use Python on Chrome. Therefore, no installation is required for users.<br>
 Click the following link: https://colab.research.google.com/drive/1aIaVj3iYTQVR0WzTayTkqp6cFnJeW98V?usp=sharing
 
-사용법:
+사용법
+조절변수: 초기위치 (x, y, heading angle)
+조절변수 설정시 유의할점: 트레이닝이 된 조건 (random range)
 
+결과예시
 여기서 보여지는 trajectory 결과에서 x, y축은 배의 LBP로 나누어 scaling 해준 값이다.
