@@ -68,7 +68,7 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 2. 매 epoch마다 초기 선박 포지션 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">를 랜덤하게 선정한다. 이때, 랜덤하게 선정되는 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">의 범위는 다음과 같이 선정하였다: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br> where \psi_0는 선박헤딩이 port/harbor을 향할때의 각도이다. 위의 내용은 다음의 figures들에 잘 설명되어져있다:
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br> where <img src="https://render.githubusercontent.com/render/math?math=\psi_0">는 선박헤딩이 port/harbor을 향할때의 각도이다. 위의 내용은 다음의 figures들에 잘 설명되어져있다:
 
 <p align="center">
   <img src="imgs/randomly_generaged_ships2.png"/>
