@@ -80,7 +80,7 @@ class CustomEnv(gym.Env):
         
         # if a ship is inside of the terminal circle
         if norm_distance_to_terminal_pos <= self.norm_termination_tolerance:
-            print("* got into the goal point circle.")
+            #print("* got into the goal point circle.")
             bonus_reward += 10
             
             if self.heading_angle_termination[0] <= heading_angle <= self.heading_angle_termination[1]:
