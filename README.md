@@ -74,8 +74,8 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
   <img src="imgs/randomly_generaged_ships2.png"/>
   <img src="imgs/psi_0.png"/>
 </p>
-3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.
-4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, *n*번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
+3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.<br>
+4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, <i>n</i>번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
 
 
 # PPO의 트레이닝을 위한 Hyper-parameter 세팅
