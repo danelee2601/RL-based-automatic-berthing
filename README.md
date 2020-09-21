@@ -47,16 +47,30 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 위의 figure에서 보상 <img src="https://render.githubusercontent.com/render/math?math=r_t">가 `interaction with environment` 으로부터 output된다. 이 보상은 `보상함수`로부터 얻어진다. 강화학습-기반 자동접안 시스템의 트레이닝에 사용된 보상함수는 다음과 같이 계산된다: <br>
 
 <p align="center">
-  <img src="imgs/reward_function.png"/>
+  <img src="imgs/reward_function2.png"/>
+</p>
+
+- `arrivial zone`의 개념은 아래의 그림에서 쉽게 설명되어져있다.
+- `heading condition`은 선박의 헤딩각도에 대한 조건을 얘기한다. `arrival zone`에서 240-300 deg 정도가 이상적인 헤딩각도로 여겨진다.
+
+<p align="center">
+  <img src="imgs/arrival_zone.png"/>
 </p>
 
 
 # 강화학습 트레이닝 절차 (pseudo code)
+
 <p align="center">
   <img src="imgs/training_procedure.png"/>
 </p>
 
-
+1. 첫번째로 actor과 critic을 초기화한다.
+2. 매 epoch마다 초기 선박 포지션 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">를 랜덤하게 선정한다. 이때, 랜덤하게 선정되는 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">의 범위는 다음과 같이 선정하였다: <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
+3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.
+4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, *n*번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
 
 # PPO의 트레이닝을 위한 Hyper-parameter 세팅
 Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.html)
@@ -67,8 +81,12 @@ Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.ht
 <p align="center">
   <img src="imgs/ship_property.png"/>
 </p>
-- n, rudder angle 제약
 
+선박 프로펠러와 러더에 걸리는 제약은 다음과 같다: <br>
+- <img src="https://render.githubusercontent.com/render/math?math=-1 \leq n \leq +1">  [rps]
+- <img src="https://render.githubusercontent.com/render/math?math=-35 \leq \psi \leq +35"> [deg]
+- <img src="https://render.githubusercontent.com/render/math?math=0 \leq |\frac{d\psi}{dt}|\leq 3"> [deg/s]
+- <img src="https://render.githubusercontent.com/render/math?math=n"> 에는 시간변화율에 따른 제약을 두지않았다. 현 연구는 강화학습-기반 자동접안시스템 의 초기 연구이므로, 제약이 덜 걸린상태에서 학습이 가능한지를 먼저 확인하기위해서 이렇게 하였다.
 
 # 트레이닝 결과
 <p align="center">
