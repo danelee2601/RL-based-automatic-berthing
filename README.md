@@ -28,23 +28,41 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 
 # 자동접안 시스템의 전반적인 흐름
 <p align="center">
-  <img src="imgs/RL_overall_flow1.png"/>
+  <img src="imgs/RL_overall_flow2.png"/>
 </p>
 위는 강화학습 기반 자동접안 시스템의 전박전인 흐름을 보여준다.<br>
-여기서 actor, critic이란 각각의 딥뉴럴네트워크(Deep Neural Network, DNN)이다.<br>
+여기서 actor, critic이란 각각의 딥뉴럴네트워크(Deep Neural Network, DNN)이다. actor-critic에 대한 자세한 사항은 구글에 수많은 자료가 있으니 참고하시면 좋을듯 합니다.<br>
 
-- actor는 정책을 mapping하는 DNN (즉, actor가 action을 output함)
-- critic은 Q-value를 output하는 DNN 이다. (Q-value란 현재 상태(state)에서 미래에 얼마만큼의 보상을 받을수 있는지를 나타내는 값이다 == 현재 상태가 얼마나 좋은지를 나타내는 값)
+- state <img src="https://render.githubusercontent.com/render/math?math=s_t=\{x, y, d, u, v, r, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=x, y, d, u, v, r, \psi"> denote an x-axial ship position, y-axial ship position, distance to a port/harbor, speed in a surge direction, speed in a sway direction, and angular speed in a yaw direction.
+- actor는 정책을 mapping하는 DNN. 즉, actor가 action을 output함. 
+- <img src="https://render.githubusercontent.com/render/math?math=a_t=\{n, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=n, \psi"> are `a target propeller rps` and `target heading angle`
+- critic은 Q-value를 output하는 DNN 이다. Q-value란 현재 상태(state)에서 미래에 얼마만큼의 보상을 받을수 있는지를 나타내는 값이다. 즉, 현재 상태가 얼마나 좋은지를 나타내는 값이다.
 
-<small>* 자세한 사항은 구글에 actor-critic method라고 검색하면 많은 자료가 나오니 참고하면 될듯합니다.</small>
+<p align="center">
+  <img src="imgs/s_t.png"/>
+</p>
 
-# 강화학습 트레이닝 절차 (pseudo code)
-1. random init posx, posy, heading_angle (이때 random하게 생성되는 위치는..)
-2. ...
-트레이닝 다되면, 테스트는 ...
 
 # 보상함수 정의
-보상함수는 r_t 를 얻기위한 함수이다. 트레이닝을 사용한
+위의 figure에서 보상 <img src="https://render.githubusercontent.com/render/math?math=r_t">가 `interaction with environment` 으로부터 output된다. 이 보상은 `보상함수`로부터 얻어진다. 강화학습-기반 자동접안 시스템의 트레이닝에 사용된 보상함수는 다음과 같이 계산된다: <br>
+
+<p align="center">
+<img src="imgs/reward_func.png"/>
+</p>
+
+
+# 강화학습 트레이닝 절차 (pseudo code)
+```
+initialize 'actor' and 'critic' 
+
+임의의 
+  
+
+
+
+트레이닝 다되면, 테스트는 ...
+```
+
 
 # PPO의 트레이닝을 위한 Hyper-parameter 세팅
 Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.html)
@@ -62,7 +80,7 @@ Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.ht
 <p align="center">
   <img src="imgs/reward_hist.png"/>
 </p>
-위는 트레이닝동안의 보상(reward) history를 보여준다. <br>
+위는 트레이닝동안의 보상(reward) history를 보여준다. 해당 그래프에는 moving average filter(window-size:80) 가 적용되어져있다.  <br>
 위에서 언급했던대로, 강화학습의 최종목표는 보상(reward)을 maximize하는 것이다. 위의 그래프에서 볼 수 있듯이, 트레이닝이 진행되면서 agent가 획득하는 reward가 점점더 높아지는것을 확인할 수 있다.
 
 # Google Colab에서 실행해보기
