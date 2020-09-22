@@ -45,13 +45,14 @@ def test(norm_init_coords, init_heading_angle, env, model, deterministic=False, 
         reward_hist.append(reward)
         
     state_hist = np.array(state_hist)
-
+    
     # plot
     pos_termination = env.get_attr("pos_termination")[0]
     terminal_circle_radius = env.get_attr("termination_tolerance")[0]
     drawer = BerthingTrajectoryDrawer(LBP, pos_termination, terminal_circle_radius, plot_lim=(-1, 20))
 
     x_hist, y_hist, heading_angle_hist, n_hist, rudder_angle_hist, u_hist, v_hist, r_hist = [state_hist[:, i] for i in range(len(current_state))]  # n [rps], rudder_angle [rad.]
+    state_hist = pd.DataFrame(state_hist, columns=["x_hist", "y_hist", "heading_angle_hist", "n_hist", "rudder_angle_hist", "u_hist", "v_hist", "r_hist"])  # convert its type to pd.DataFrame
     
     # plot: ship trajectory
     drawing_period = 50
