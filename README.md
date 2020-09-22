@@ -114,8 +114,9 @@ Click the following link: https://colab.research.google.com/drive/1aIaVj3iYTQVR0
 a) Pre-settings
 b) Import dependent libraries/packages
 c) Version check
-d) Test the trained model
-e) Manipulate the resultant data
+d) Load a trained model
+e) Test the trained model
+f) Manipulate the resultant data
 ```
 2. 목차 `a), b), c)`에 있는 code block을 왼쪽 실행버튼을 클릭해서 순서대로 실행시킨다. (`shift+enter`로도 실행가능) <br>
 3. 목차 `d)`에서 유저가 조절할수있는 `조절변수`가 존재한다. 여기에서의 `조절변수`는 다음과 같다: `training stage`
@@ -127,10 +128,11 @@ e) Manipulate the resultant data
 </p>
 
 4. 목차 `e)`에서도 유저가 조절할수있는 `조절변수`가 존재한다. 여기에서의 `조절변수`는 다음과 같다: `ship's initial position (x/LBP, y/LBP, heading-angle)`
-> `ship's initial position`: 주어진 Google Colab에서는 이미 학습이 완료된 강화학습을 테스트할수있도록 구축되어져있다. 학습된 강화학습 알고리즘이 성공적으로 접안을 할 수 있는지 테스트를 할때, 유저는 선박의 초기위치를 바꿔가며 테스트를 해보고싶을것이다. 선박의 초기위치를 조절할 때 한가지 유념해야할 사항은 트레이닝시에 랜덤하게주었던 ship's initial position의 범위(range) 이다. 위의 내용을 재참조하면 다음과 같다: <br>
-> &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=7 \leq x_0/LBP \leq 12"> <br>
-> &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=2 \leq y_0/LBP \leq 9"> <br>
-> &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=\psi_0=\psi_p \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
+> `ship's initial position`: 주어진 Google Colab에서는 이미 학습이 완료된 강화학습을 테스트할수있도록 구축되어져있다. 학습된 강화학습 알고리즘이 성공적으로 접안을 할 수 있는지 테스트를 할때, 유저는 선박의 초기위치를 바꿔가며 테스트를 해보고싶을것이다. 선박의 초기위치를 조절할 때 한가지 유념해야할 사항은 트레이닝시에 랜덤하게주었던 ship's initial position의 랜덤범위(range) 이다. 위의 내용을 재참조하면 다음과 같다: <br>
+> - <img src="https://render.githubusercontent.com/render/math?math=7 \leq x_0/LBP \leq 12"> <br>
+> - <img src="https://render.githubusercontent.com/render/math?math=2 \leq y_0/LBP \leq 9"> <br>
+> - <img src="https://render.githubusercontent.com/render/math?math=\psi_0=\psi_p \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
+>
 > 머신러닝을 테스트할때, 트레이닝된 데이터의 범위내에서는 좋은 성능을 발휘하지만, 범위밖에서는 성능이 떨어지는 경향을 보인다. 내삽(트레이닝데이터 범위내)이 외삽(트레이닝데이터 범위밖)보다 더 쉽기때문이다. 이말은 즉슨, <img src="https://render.githubusercontent.com/render/math?math=x/LBP, y/LBP, \epsilon">을 조절할때 트레이닝시의 랜덤범위안에서 조절하면 좋은 성능을 기대할 수 있고, 랜덤범위밖에서 조절하면 외삽이 되기때문에 외삽에 정도에 따라서 어느정도의 성능저하가 예상될 수 있다. <br>
 > * Google Colab에서 `ship's initial position`은 `norm_init_coords`과 `extra_angle_deg` 을 통해 조절가능하다. <br>
 
