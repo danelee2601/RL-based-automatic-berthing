@@ -68,12 +68,12 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 2. 매 epoch마다 초기 선박 포지션 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">를 랜덤하게 선정한다. 이때, 랜덤하게 선정되는 <img src="https://render.githubusercontent.com/render/math?math=\{x,y,\psi\}">의 범위는 다음과 같이 선정하였다: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] where <img src="https://render.githubusercontent.com/render/math?math=\psi_0">는 선박헤딩이 port/harbor을 향할때의 각도이다. <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=\psi_p \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] where <img src="https://render.githubusercontent.com/render/math?math=\psi_p">는 선박헤딩이 port/harbor을 향할때의 각도이다. <br>
 위의 내용은 다음의 figures들에 잘 설명되어져있다:
 
 <p align="center">
   <img src="imgs/randomly_generaged_ships2.png"/>
-  <img src="imgs/psi_0.png"/>
+  <img src="imgs/psi_p.png"/>
 </p>
 3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.<br>
 4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, <i>n</i>번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
@@ -129,7 +129,7 @@ e) Manipulate the resultant data
 > `ship's initial position`: 주어진 Google Colab에서는 이미 학습이 완료된 강화학습을 테스트할수있도록 구축되어져있다. 학습된 강화학습 알고리즘이 성공적으로 접안을 할 수 있는지 테스트를 할때, 유저는 선박의 초기위치를 바꿔가며 테스트를 해보고싶을것이다. 선박의 초기위치를 조절할 때 한가지 유념해야할 사항은 트레이닝시에 랜덤하게주었던 ship's initial position의 범위(range) 이다. 위의 내용을 재참조하면 다음과 같다: <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
-> &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=\psi_p \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
 > 머신러닝을 테스트할때, 트레이닝된 데이터의 범위내에서는 좋은 성능을 발휘하지만, 범위밖에서는 성능이 떨어지는 경향을 보인다. 내삽(트레이닝데이터 범위내)이 외삽(트레이닝데이터 범위밖)보다 더 쉽기때문이다. 이말은 즉슨, <img src="https://render.githubusercontent.com/render/math?math=x/LBP, y/LBP, \epsilon">을 조절할때 트레이닝시의 랜덤범위안에서 조절하면 좋은 성능을 기대할 수 있고, 랜덤범위밖에서 조절하면 외삽이 되기때문에 외삽에 정도에 따라서 어느정도의 성능저하가 예상될 수 있다. <br>
 > * Google Colab에서 `ship's initial position`은 `norm_init_coords`과 `extra_angle_deg` 을 통해 조절가능하다. <br>
 
