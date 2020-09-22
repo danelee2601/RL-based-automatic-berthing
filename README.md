@@ -118,7 +118,9 @@ e) Manipulate the resultant data
 ```
 2. 목차 `a), b), c)`에 있는 code block을 왼쪽 실행버튼을 클릭해서 순서대로 실행시킨다. (`shift+enter`로도 실행가능) <br>
 3. 목차 `d)`에서 유저가 조절할수있는 `조절변수`가 존재한다. 여기에서의 `조절변수`는 다음과 같다: `training stage`
-> `training stage`: 강화학습의 시간에 따른 성능은 다음과같다: 학습초기에 성능이 낮고, 시간이 지날수록 학습이 진행되면서 성능이 향상된다. 여기서 성능의 향상정도는 `reward(보상) history`를 통해 알수있다. 여기서 `training stage` 을 예를 들어설명하면 다음과같다: 전체 학습의 `training stage`가 100이라고하면, `training stage`가 10일때는 학습초기, `training stage`가 90일때는 학습후기 정도로 인식될 수 있다. Google Colab에서 `training stage`조절은 `loading_section_num=...`조절을 통해 할 수 있다. `training stage`는 아래의 figure을 참고하여 조절하면 된다:
+> `training stage`: 강화학습의 시간에 따른 성능은 다음과같다: 학습초기에 성능이 낮고, 시간이 지날수록 학습이 진행되면서 성능이 향상된다. 여기서 성능의 향상정도는 `reward(보상) history`를 통해 알수있다. 여기서 `training stage` 을 예를 들어설명하면 다음과같다: 전체 학습의 `training stage`가 100이라고하면, `training stage`가 10일때는 학습초기, `training stage`가 90일때는 학습후기 정도로 인식될 수 있다. <br>
+> * Google Colab에서 `training stage`조절은 `loading_section_num=...`조절을 통해 할 수 있다. `training stage`는 아래의 figure을 참고하여 조절하면 된다:
+
 <p align="center">
   <img src="imgs/training_stage.png"/>
 </p>
@@ -128,10 +130,20 @@ e) Manipulate the resultant data
 > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=7 \leq x/LBP \leq 12"> <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=2 \leq y/LBP \leq 9"> <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://render.githubusercontent.com/render/math?math=\psi_0 \pm \epsilon"> where <img src="https://render.githubusercontent.com/render/math?math=0 \leq \epsilon \leq 15"> [deg] <br>
-> 머신러닝을 테스트할때, 트레이닝된 데이터의 범위내에서는 좋은 성능을 발휘하지만, 범위밖에서는 성능이 떨어지는 경향을 보인다. 내삽(트레이닝데이터 범위내)이 외삽(트레이닝데이터 범위밖)보다 더 쉽기때문이다. 이말은 즉슨, <img src="https://render.githubusercontent.com/render/math?math=x/LBP, y/LBP, \epsilon">을 조절할때 트레이닝시의 랜덤범위안에서 조절하면 좋은 성능을 기대할 수 있고, 랜덤범위밖에서 조절하면 외삽이 되기때문에 외삽에 정도에 따라서 어느정도의 성능저하가 예상될 수 있다.<br>
+> 머신러닝을 테스트할때, 트레이닝된 데이터의 범위내에서는 좋은 성능을 발휘하지만, 범위밖에서는 성능이 떨어지는 경향을 보인다. 내삽(트레이닝데이터 범위내)이 외삽(트레이닝데이터 범위밖)보다 더 쉽기때문이다. 이말은 즉슨, <img src="https://render.githubusercontent.com/render/math?math=x/LBP, y/LBP, \epsilon">을 조절할때 트레이닝시의 랜덤범위안에서 조절하면 좋은 성능을 기대할 수 있고, 랜덤범위밖에서 조절하면 외삽이 되기때문에 외삽에 정도에 따라서 어느정도의 성능저하가 예상될 수 있다. <br>
+> * Google Colab에서 `ship's initial position`은 `norm_init_coords`과 `extra_angle_deg` 을 통해 조절가능하다. <br>
 
+# 결과 예시
+setting은 다음과 같다:
+- `training stage`: 12
+- `ship's initial position`: (12, 9, 10)  // (x/LBP, y/LBP, epsilon[deg])
 
+결과는 다음과 같다:
 
+<p align="center">
+  <img src="imgs/result_eg_00.png"/>
+</p>
 
-결과예시
-여기서 보여지는 trajectory 결과에서 x, y축은 배의 LBP로 나누어 scaling 해준 값이다.
+<p align="center">
+  <img src="imgs/result_eg_01.png"/>
+</p>
