@@ -35,7 +35,7 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 
 - state <img src="https://render.githubusercontent.com/render/math?math=s_t=\{x, y, d, u, v, r, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=x, y, d, u, v, r, \psi"> denote `an x-axial ship position, y-axial ship position, distance to a port/harbor, speed in a surge direction, speed in a sway direction, and angular speed in a yaw direction`
 - actor는 정책을 mapping하는 DNN. 즉, actor가 action을 output함. 
-- <img src="https://render.githubusercontent.com/render/math?math=a_t=\{n, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=n, \delta"> are `a target propeller rps` and `target heading angle`
+- <img src="https://render.githubusercontent.com/render/math?math=a_t=\{n, \delta\}"> where <img src="https://render.githubusercontent.com/render/math?math=n, \delta"> are `a target propeller rps` and `target heading angle`
 - critic은 Q-value를 output하는 DNN 이다. Q-value란 현재 상태(state)에서 미래에 얼마만큼의 보상을 받을수 있는지를 나타내는 값이다. 즉, 현재 상태가 얼마나 좋은지를 나타내는 값이다.
 
 <p align="center">
