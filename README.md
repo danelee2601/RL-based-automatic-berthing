@@ -47,7 +47,7 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 위의 figure에서 보상 <img src="https://render.githubusercontent.com/render/math?math=r_t">가 `interaction with environment` 으로부터 output된다. 이 보상은 `보상함수`로부터 얻어진다. 강화학습-기반 자동접안 시스템의 트레이닝에 사용된 보상함수는 다음과 같이 계산된다: <br>
 
 <p align="center">
-  <img src="imgs/reward_function3.png"/>
+  <img src="imgs/reward_function3.png"/> 
 </p>
 
 - `arrivial zone`의 개념은 아래의 그림에서 쉽게 설명되어져있다.
