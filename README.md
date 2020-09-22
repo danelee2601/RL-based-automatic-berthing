@@ -89,6 +89,7 @@ Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.ht
   <img src="imgs/ship_property.png"/>
 </p>
 
+사용된 선박은 `중형컨테이너선` 이다. <br>
 선박 프로펠러와 러더에 걸리는 제약은 다음과 같다: <br>
 - <img src="https://render.githubusercontent.com/render/math?math=-1 \leq n \leq +1">  [rps]
 - <img src="https://render.githubusercontent.com/render/math?math=-35 \leq \delta \leq +35"> [deg]
