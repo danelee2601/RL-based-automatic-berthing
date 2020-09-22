@@ -35,7 +35,7 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 
 - state <img src="https://render.githubusercontent.com/render/math?math=s_t=\{x, y, d, u, v, r, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=x, y, d, u, v, r, \psi"> denote `an x-axial ship position, y-axial ship position, distance to a port/harbor, speed in a surge direction, speed in a sway direction, and angular speed in a yaw direction`
 - actor는 정책을 mapping하는 DNN. 즉, actor가 action을 output함. 
-- <img src="https://render.githubusercontent.com/render/math?math=a_t=\{n, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=n, \psi"> are `a target propeller rps` and `target heading angle`
+- <img src="https://render.githubusercontent.com/render/math?math=a_t=\{n, \psi\}"> where <img src="https://render.githubusercontent.com/render/math?math=n, \delta"> are `a target propeller rps` and `target heading angle`
 - critic은 Q-value를 output하는 DNN 이다. Q-value란 현재 상태(state)에서 미래에 얼마만큼의 보상을 받을수 있는지를 나타내는 값이다. 즉, 현재 상태가 얼마나 좋은지를 나타내는 값이다.
 
 <p align="center">
@@ -91,8 +91,8 @@ Same as [Here](https://stable-baselines.readthedocs.io/en/master/modules/ppo2.ht
 
 선박 프로펠러와 러더에 걸리는 제약은 다음과 같다: <br>
 - <img src="https://render.githubusercontent.com/render/math?math=-1 \leq n \leq +1">  [rps]
-- <img src="https://render.githubusercontent.com/render/math?math=-35 \leq \psi \leq +35"> [deg]
-- <img src="https://render.githubusercontent.com/render/math?math=0 \leq |\frac{d\psi}{dt}|\leq 3"> [deg/s]
+- <img src="https://render.githubusercontent.com/render/math?math=-35 \leq \delta \leq +35"> [deg]
+- <img src="https://render.githubusercontent.com/render/math?math=0 \leq |\frac{d\delta}{dt}|\leq 3"> [deg/s]
 - <img src="https://render.githubusercontent.com/render/math?math=n"> 에는 시간변화율에 따른 제약을 두지않았다. 현 연구는 강화학습-기반 자동접안시스템 의 초기 연구이므로, 제약이 덜 걸린상태에서 학습이 가능한지를 먼저 확인하기위해서 이렇게 하였다.
 
 # 트레이닝 결과
