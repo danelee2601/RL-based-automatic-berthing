@@ -152,4 +152,4 @@ setting은 다음과 같다:
 </p>
 
 # Acknowledgement
-본 프로젝트는 스마트 자율운항선박 전문가 양성사업단 SMASH (Smart Maritime Autonomous SHip educarion center)의 지원을 받아 이루어졌음을 밝힙니다.
+
