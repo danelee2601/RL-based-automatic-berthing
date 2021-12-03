@@ -52,6 +52,7 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 
 - `arrivial zone`의 개념은 아래의 그림에서 쉽게 설명되어져있다.
 - `heading condition`은 선박의 헤딩각도에 대한 조건을 얘기한다. `arrival zone`에서 240-300 deg 정도가 이상적인 헤딩각도로 여겨진다.
+- [UPDATE] <img src="https://render.githubusercontent.com/render/math?math=\psi"> should be replaced with <img src="https://render.githubusercontent.com/render/math?math=\delta">. Typo correction.
 
 <p align="center">
   <img src="imgs/arrival_zone.png"/>
@@ -73,7 +74,6 @@ agent가 현재 상태(state)를 고려하여, 현재의 행동정책(policy)에
 
 <p align="center">
   <img src="imgs/randomly_generaged_ships2.png"/>
-  <img src="imgs/psi_p.png"/>
 </p>
 3. 시뮬레이션 한 epoch를 돈다. 이때, 최대 timestep은 3000s로 선정하였다.<br>
 4. 한 epoch내의 매 타임스텝마다, action을 취하고 interaction with the environment을 수행하고, <i>n</i>번째 타임스텝마다 actor, critic을 업데이트(트레이닝)한다.
