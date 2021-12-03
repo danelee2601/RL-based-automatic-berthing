@@ -4,6 +4,9 @@
   <img src="imgs/berthing_trajectory_03.png"/>
 </p>
 
+# Research Paper
+The research paper for this work can be found [here](https://google.com/).
+
 # 사용된 강화학습 알고리즘
 [Proximal Policy Optimization (PPO) (2017)](https://arxiv.org/abs/1707.06347) <br>
 
